@@ -8,6 +8,9 @@ url = "https://windscribe.com/signup"
 account_url = "https://windscribe.com/myaccount?hello"
 filepath = "./account.txt"
 
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+
 
 class Account:
     def __init__(self):
@@ -16,7 +19,7 @@ class Account:
 
 def main():
     #open browser
-    driver = webdriver.Chrome(executable_path=path)
+    driver = webdriver.Chrome(executable_path=path,options=options)
 
     #open URL
     driver.get(url)
