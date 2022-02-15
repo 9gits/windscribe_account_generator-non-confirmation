@@ -1,6 +1,6 @@
 # windscribe_account_generator
 
-Generate WINDSCRIBE_ACCOUNT (NON-confirmation)
+Generate WINDSCRIBE_ACCOUNT (NON-mail_confirmation)
 
 use chrome or firefox 
 
