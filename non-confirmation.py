@@ -5,6 +5,7 @@ import time
 
 path = "./chromedriver.exe"
 url = "https://windscribe.com/signup"
+account_url = "https://windscribe.com/myaccount?hello"
 filepath = "./account.txt"
 
 
@@ -60,15 +61,24 @@ def main():
     #wait
     time.sleep(10)
 
-    #close browser
-    driver.close()
+    #check successful-creation
+    cur_url = driver.current_url
+    if cur_url == account_url:
+        print("creation successful")
+        #close browser
+        driver.close()
 
-    #output information
-    print(Account.name)
-    print(Account.password)
+        #output information
+        print(Account.name)
+        print(Account.password)
 
-    #write account information to txtfile
-    write_account_information()
+        #write account information to txtfile
+        write_account_information()
+    else:
+        print("creation failed")
+        #close browser
+        driver.close()
+    
     
     
 def write_account_information():
@@ -76,7 +86,7 @@ def write_account_information():
     with open(filepath,'a') as file:
         print(Account.name,file=file)
         print(Account.password,file=file)
-        print('\n',file=file)
+        #print('\n',file=file)
 
 
 if __name__ == '__main__':
